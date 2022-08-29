@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react"
 
-const SubButton = ({onClick}) => {
+const SubButton = ({ onClick }) => {
   return (
     <>
-      <button className='sub-btn'  onClick={onClick}>+</button>
+      <button className="sub-btn" onClick={onClick}>
+        +
+      </button>
     </>
   )
 }

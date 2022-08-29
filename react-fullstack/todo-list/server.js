@@ -25,6 +25,12 @@ const unkownHttp = (req, res, next) => {
     next()
   }
 
+// get category list 
+app.get("/api/category", (req, res, next) => {
+    pool.query('SELECT * FROM category').then((data) => {
+        res.send(data.rows);
+    }).catch(next); 
+})
 
 // get main to do list 
 app.get("/api/mainTodo", (req, res, next) => {
@@ -38,14 +44,28 @@ app.get("/api/subTodo", (req, res,next) => {
         res.send(data.rows); 
     }).catch(next); 
 })
+// add a category 
+app.post('/api/category', (req, res, next) => {
+    const newTodo = req.body;
+    console.log(newTodo) 
+    if(newTodo.category_task) {
+        console.log('hello'); 
+        pool.query('INSERT INTO category (category_task) VALUES ($1) RETURNING *', [newTodo.category_task]).then((data) => {
+            res.status(201).send(data.rows[0])
+        })
+        .catch(next); 
+    } else (
+        res.status(400).send('Incorrect format')
+    )
+}); 
 
 // add to main task 
 app.post('/api/mainTodo', (req, res, next) => {
     const newTodo = req.body;
     console.log(newTodo) 
-    if(newTodo.main_todo && newTodo.due_date) {
+    if(newTodo.main_todo && newTodo.due_date && newTodo.category_id) {
         console.log('hello'); 
-        pool.query('INSERT INTO mainTodo (main_todo, due_date) VALUES ($1, $2) RETURNING *', [newTodo.main_todo, newTodo.due_date]).then((data) => {
+        pool.query('INSERT INTO mainTodo (main_todo, due_date, category_id) VALUES ($1, $2, $3) RETURNING *', [newTodo.main_todo, newTodo.due_date, newTodo.category_id]).then((data) => {
             res.status(201).send(data.rows[0])
         })
         .catch(next); 
@@ -66,6 +86,19 @@ app.post('/api/subTodo', (req, res, next) => {
         res.status(400).send('Incorrect format')
     )
 }); 
+
+// delete a category 
+
+app.delete('/api/category/:id', (req, res, next) => {
+    const delteTask = req.params.id
+    pool.query('DELETE FROM category WHERE id=$1 RETURNING *', [delteTask]).then((data) => {
+        if (data.rows.length === 0) {
+            res.sendStatus(404)
+          } else {
+            res.status(204).send(data.rows[0])
+          }
+    })
+})
 
 // delete main 
 app.delete('/api/mainTodo/:id', (req, res, next) => {

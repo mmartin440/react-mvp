@@ -14,10 +14,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-.leftTask {
-    font-family: 'Oswald', sans-serif;
-    word-wrap: break-word;
-}
 nav {
     height: 60px;
     display: flex;
@@ -28,13 +24,24 @@ nav {
     background-color: #6d8e7c;
     /* font-family: 'Silkscreen', cursive; */
 }
-.main {
-    background: #f4f4f4;
-    margin: 8px;
-    padding: 10px 20px;
-    cursor: pointer ;  
-    border-radius: 5px; 
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: white;
+
 }
+.container {
+    flex: 1;
+ }
+ .mainContainer {
+    
+    padding: 30px;
+    width: 30%;
+    height: 100%;
+    float: left;
+    background-color: #cfd8d3;
+} 
 .footer {
     height: 40px;
     background-color: #6d8e7c;
@@ -48,15 +55,43 @@ nav {
 .logo {
     margin: 8px;
 }
-
-.title{
+/* ---ADD Category------- */
+.cat-btn {
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-family: 'Oswald';
+    cursor: pointer;
+    color: rgb(218, 255, 240); 
+}
+.catTitle {
+    font-family: 'Oswald';
+}
+.mainCat {
+    background: #f4f4f4;
+    margin: 8px;
+    padding: 10px 20px;
+    cursor: pointer ;  
+    border-radius: 5px; 
+    text-transform: uppercase;
+}
+.catLogo {
+    text-align: right;
+}
+.checkMain {
+    color: rgb(56 115 56);
+    cursor: pointer;
+    margin: 0px 8px
+}
+.deleteCat {
+    color: rgb(113, 46, 46);
+    cursor: pointer;
+}
+.catContainer-btn {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
-    color: white;
-    /* padding-left: 600px; */
 }
-
+/* ----Add a task----- */
 .btn {
 
     border-radius: 5px;
@@ -66,19 +101,6 @@ nav {
     padding: 5px;
     font-family: 'Oswald';
 }
-.btnContainer {
-    display: flex;
-    justify-content: center;
-}
-
-.mainContainer {
-    
-    padding: 30px;
-    width: 30%;
-    height: 100%;
-    float: left;
-    background-color: #cfd8d3;
-}
 .subContainer {
   
     margin: 30px auto;
@@ -87,10 +109,54 @@ nav {
     height: 100%;
     float: right;
 }
-.mainTask {
-    padding-right: 20px;
+.btnContainer {
+    display: flex;
+    justify-content: center;
 }
+.add-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-control input {
+    width: 100%;
+    height: 30px;
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+.label-addTask {
+    font-family: 'Bebas Neue', cursive;
+    margin: 0px 10px;
+}
+.btn-block {
+    width: 25%;
+    display: inline-block;
+    background: #294d35;
+    color: #fff;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Oswald', sans-serif;
+    }
+/* -----ALL THE TASK------ */
 
+.main {
+    background: #f4f4f4;
+    margin: 8px;
+    padding: 10px 20px;
+    cursor: pointer ;  
+    border-radius: 5px; 
+}
+.leftTask {
+    font-family: 'Oswald', sans-serif;
+    word-wrap: break-word;
+}
+.left-logo {
+    text-align: right;
+}
 .plusBtn {
     color: rgb(56 115 56);
     cursor: pointer;
@@ -102,46 +168,19 @@ nav {
     margin: 0px 5px;
 }
 
-.form-control input {
-    width: 100%;
-    height: 30px;
-    margin: 10px;
-    padding: 5px 10px;
-    font-size: 15px;
-    border: none;
-  }
 
-  .btn-block {
-  width: 50%;
-  display: inline-block;
-  background: #294d35;
-  color: #fff;
-  border: none;
-  padding: 5px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 15px;
-  font-family: 'Oswald', sans-serif;
-  }
-
-
-  .subTask {
+/* ----SUB TASKS ------ */
+.left-h{
+    font-family: 'Oswald', sans-serif;
+}
+.subTask {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 25px;
 }
-
-form.subadd-form {
-    display: flex;
-}
-.addSub {
-    padding: 10px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: 40px;
+label {
+    font-family: 'Bebas Neue', cursive;
 }
 .checkbox {
     padding-right: 20px;
@@ -153,42 +192,13 @@ form.subadd-form {
     text-decoration: line-through;
     padding-right: 20px;
 }
-
-p.ast {
-    padding: 0px 12px;
-}
-
-.container {
-   flex: 1;
-}
-
-label {
-    font-family: 'Bebas Neue', cursive;
-}
-.label-addTask {
-    font-family: 'Bebas Neue', cursive;
-    margin: 0px 10px;
-}
-.add-form {
+.addSub {
+    padding: 10px 0px;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    height: 40px;
 }
-
-.cttco {
-    font-family: 'Oswald', sans-serif;
-}
-.b {
-    list-style-position: inside;
-    font-family: 'Oswald', sans-serif;
-  }
-  .a {
-    font-family: 'Oswald', sans-serif;
-  }
-  .left-h{
-    font-family: 'Oswald', sans-serif;
-  }
-
 .sub-btn {
     border: none;
     height: 25px;
@@ -199,6 +209,18 @@ label {
     margin: 0px 20px;
 }
 
-.left-logo {
-    text-align: right;
+form.subadd-form {
+    display: flex;
+}
+
+/* ------Opening page------ */
+.img{
+    display: flex;
+    flex-direction: column;
+}
+img{
+    object-fit: contain;
+}
+.welcome {
+    font-family: 'Oswald', sans-serif;
 }

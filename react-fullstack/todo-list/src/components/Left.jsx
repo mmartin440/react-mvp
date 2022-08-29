@@ -1,12 +1,14 @@
-import React from 'react'
-import InnerLeft from './InnerLeft';
+import React from "react"
+import studying from "./images/studying.jpeg"
 
-const Left = ({mainTask}) => {
-    // console.log(mainTask.length, 'the length'); 
+const Left = ({ mainTask }) => {
+  // console.log(mainTask.length, 'the length');
   return (
     <>
-      <h3 className='cttco'>CURRENT TASK TO COMPLETE</h3> 
-      { mainTask.length > 0 ? mainTask.map((task) => <InnerLeft key ={task.id} task={task} />) : <div className='a'> NO TASKS</div>}
+      <div className="img">
+        <h3 className="welcome">WELCOME</h3>
+        <img src={studying} />
+      </div>
     </>
   )
 }
